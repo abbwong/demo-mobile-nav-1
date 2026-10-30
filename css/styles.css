@@ -1,11 +1,94 @@
-/* Lesson 17: Toggle Navigation */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.125rem;
+}
 
 /* Step 1: Header layout (flex + flex-wrap) */
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #6a0033;
+    color: #fff;
+}
 
-/* Step 2: Large tap areas */
+main {
+    padding: 1rem;
+}
+
+h2,
+p {
+    margin-bottom: 1.25rem;
+}
+
+/* Step 2: Large tap areas + style nav so that it always sits on it own line*/
+.toggle-btn {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+nav {
+    /* this will force he nav to always be on the second line */
+    flex-basis: 100%;
+}
+
+nav ul {
+    list-style-type: none;
+    margin-top: 1rem;
+}
+
+nav a {
+    display: block;
+    padding: 1rem;
+    color: #fff;
+    text-decoration: none;
+    border-top: 1px solid lightgrey;
+}
+
+nav li:first-child a {
+    border-top: none;
+}
 
 /* Step 3: Default (closed) state */
+nav {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
 
 /* Step 4: Open state + transition */
-
+/* this class is not written in the HTML - the javacsriot will add this to the HTML when the button is clicked */
+.open-nav {
+    max-height: 20rem;
+}
 /* Step 5: Larger screens */
+@media (width > 800px) {
+    .toggle-btn {
+        display: none;
+    }
+
+    nav {
+        max-height: unset;
+        flex-basis: auto;
+    }
+
+    nav a {
+        border: none;
+    }
+
+    nav ul {
+        display: flex;
+    }
+}
